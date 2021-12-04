@@ -73,7 +73,7 @@ def get_surname(message):
 def get_age(message):
     connect = sqlite3.connect('users.db')
     cursor = connect.cursor()
-    inpAge = message.text;
+    inpAge = 0;
     while inpAge == 0:
         try:
              age = int(message.text)
