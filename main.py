@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 import telebot
 bot = telebot.TeleBot('5004146707:AAHXsREczeGn1xpICEgXLJGaalDh4-mZaMU')
 @bot.message_handler(content_types=['text'])
