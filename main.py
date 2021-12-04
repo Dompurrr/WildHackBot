@@ -91,11 +91,23 @@ def get_sex(message):
     cursor.execute(f"UPDATE login_id SET sex = '{inpSex}' WHERE id = {message.chat.id}")
     connect.commit()
 
-
-
-
-
-
+@bot.message_handler(content_types=['text'])
+def get_question(message):
+    f = open('in.txt', 'r')
+    for line in f:
+        if(line.split()[0] == 'new'):
+            cur = f.readline()
+            if(cur.split()[0] == message):
+                ans = ''
+                while cur.split()[0] != 'end':
+                    cur = f.readline()
+                    if(cur.split()[0] != 'end'):
+                        ans += cur
+                bot.send_message(message.from_user.id, ans);
+                if(message == standart_mess):
+                bot.register_next_step_handler(message, get_diplom);
+def get_diplom(message):
+	cursor.execute(f"UPDATE login_id SET achivments = '{message}' WHERE id = {message.chat.id}")
 
 bot.polling(none_stop=True, interval=0)
 
